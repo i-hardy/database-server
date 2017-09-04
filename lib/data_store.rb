@@ -1,9 +1,9 @@
 class DataStore
   def self.set(params)
-    @data = params
+    @data = params.to_json
   end
 
   def self.get
-    @data.to_json
+    @data
   end
 end
