@@ -4,7 +4,7 @@ class DataStore
     @data << params
   end
 
-  def self.get(params)
-    @data.find { |hash| hash[params["key"]] }[params["key"]]
+  def self.get(key)
+    @data.find { |hash| hash[key] }[key]
   end
 end

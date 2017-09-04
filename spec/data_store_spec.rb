@@ -3,7 +3,7 @@ require 'data_store'
 describe DataStore do
   subject(:datastore) { described_class }
   let(:request1) { {"thosecows" => "faraway"} }
-  let(:request2) { {"key" => "thosecows"} }
+  let(:request2) { "thosecows" }
 
   describe "#set" do
     it "receives and stores a parameter hash in an array" do
