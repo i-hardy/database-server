@@ -6,7 +6,10 @@ class DatabaseServer < Sinatra::Base
   set :port, 4000
 
   post '/set' do
-    p params
+    DataStore.set(params)
   end
 
+  get '/get' do
+    DataStore.get
+  end
 end
