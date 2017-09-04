@@ -1,9 +1,10 @@
 class DataStore
   def self.set(params)
-    @data = params.to_json
+    @data ||= []
+    @data << params
   end
 
-  def self.get
-    @data
+  def self.get(params)
+    @data.find { |hash| hash[params["key"]] }[params["key"]]
   end
 end

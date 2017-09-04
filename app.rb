@@ -9,6 +9,6 @@ class DatabaseServer < Sinatra::Base
   end
 
   get '/get' do
-    DataStore.get
+    DataStore.get(params)
   end
 end

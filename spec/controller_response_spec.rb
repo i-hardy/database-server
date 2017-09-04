@@ -1,5 +1,6 @@
 describe 'Database Server App' do
-  let(:params) { "thosecows=faraway" }
+  let(:post_params) { "thosecows=faraway" }
+  let(:get_params) { "key=thosecows" }
   let(:hash) { {"thosecows" => "faraway"} }
 
   def app
@@ -7,27 +8,17 @@ describe 'Database Server App' do
   end
 
   describe "POST /set" do
-    it "can receive a key-value pair of params" do
-      post "/set?#{params}"
-      expect(last_response).to be_ok
-    end
-
     it "passes the params received into the model" do
       expect(DataStore).to receive(:set).with(hash)
-      post "/set?#{params}"
+      post "/set?#{post_params}"
     end
   end
 
   describe "GET /get" do
-    it "can respond to a get request on /get" do
-      get "/get"
-      expect(last_response).to be_ok
-    end
-
     it "responds with the last posted params as a JSON object" do
-      post "/set?#{params}"
-      get "/get"
-      expect(last_response.body).to eq hash.to_json
+      post "/set?#{post_params}"
+      get "/get?#{get_params}"
+      expect(last_response.body).to eq hash["thosecows"]
     end
   end
 end
