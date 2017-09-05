@@ -9,4 +9,4 @@ $ cd database-server
 $ bundle
 $ rackup
 ```
-A post request made to /set?somekey=somevalue enables the parameters to be retrieved via a get request to /get.
+A post request made to /set?somekey=somevalue enables the value to be retrieved via a get request to /get?key=somekey.
